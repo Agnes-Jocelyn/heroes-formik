@@ -1,13 +1,13 @@
 {
-    "heroes" : [
-        {
-            "id": 1,
-            "fullname" : "Ki Hajar Dewantara",
-            "born" : "1883",
-            "died" : "1959",
-            "description" : "Pengajar dan menteri pemerintahan, mendirikan Taman Siswa, saudara Suryopranoto",
-            "establishment" : "1959",
-            "imgUrl" : "https://pngimage.net/wp-content/uploads/2018/06/ki-hajar-dewantara-png-4.png"
-        }
-    ]
+  "heroes": [
+    {
+      "id": 1,
+      "name": "Ki Hajar Dewantara",
+      "born": "1883",
+      "died": "1959",
+      "description": "Pengajar dan menteri pemerintahan, mendirikan Taman Siswa, saudara Suryopranoto",
+      "establishment": "1959",
+      "imgUrl": "https://pngimage.net/wp-content/uploads/2018/06/ki-hajar-dewantara-png-4.png"
+    }
+  ]
 }

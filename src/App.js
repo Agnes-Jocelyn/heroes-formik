@@ -1,12 +1,25 @@
-import React from 'react';
-import './App.css'
-import Input from './components/Input'
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import "./components/Style.css";
+import Header from "./components/Header";
+import Input from "./components/Input";
+import Data from "./components/Data"
 
 function App() {
   return (
-    <div className="App-header">
-      <Input/>
-    </div>
+    <BrowserRouter>
+      <div>
+        <Header />
+        <Switch>
+        <Route path="/data"> 
+          <Data/>
+          </Route>
+          <Route path="/">
+              <Input/>
+          </Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 

@@ -1,81 +1,109 @@
-import React from 'react';
-import {useFormik, Form, Field} from 'formik';
-import {Card, Button} from 'react-bootstrap';
+import React, {Component} from 'react';
+import {Formik, Form, Field} from 'formik';
+import cardImage from './cardimg.jpg'
+import Axios from 'axios';
+import './Style.css'
 
-const inputForm = () => {
-    const formik = useFormik({
-            initialValues:{
+
+class Input extends Component{
+    state = {
+        data: []
+    }
+
+    handleSubmit = (values, actions) => {
+    let data = [];
+    const URL = `http://localhost:8000/heroes`
+    Axios.post(URL,{
+        values
+    })
+    .then(response => {
+        actions.setSubmitting(false)
+        actions.resetForm()
+        alert('Successfully Submitted')
+    })
+    }
+    render(){
+        return(
+            <Formik
+            initialValues={{
                 name: '',
                 born: '',
-                died: '',
+                died:'',
                 description:'',
                 establishment:'',
-                imgUrl:''
-            },
-            onSubmit: values => {
-                console.log(values);
-                
-            },
-        });
-        return (
-            <Form onSubmit={formik.handleSubmit}>
-                <div>
-                <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="" />
-                <Card.Body>
-                 <Field
-                    type="text"
-                    onChange={formik.handleChange}
-                    value={formik.values.name}
-                    name="name"
-                    placeholder="Name"
-                    />
-                    <br/>
-                <Field
-                    type="number"
-                    onChange={formik.handleChange}
-                    value={formik.values.born}
-                    name="born"
-                    placeholder="Born"
-                    />
-                    <br/>
-                <Field
-                    type="number"
-                    onChange={formik.handleChange}
-                    value={formik.values.died}
-                    name="died"
-                    placeholder="Died"
-                    />
-                    <br/>
-                <Field
-                    type="text"
-                    onChange={formik.handleChange}
-                    value={formik.values.description}
-                    name="description"
-                    placeholder="Description"
-                    />
-                    <br/>
-                <Field
-                    type="number"
-                    onChange={formik.handleChange}
-                    value={formik.values.establishment}
-                    name="establisment"
-                    placeholder="Establishment"
-                    />
-                    <br/>
-                <Field
-                    type="text"
-                    onChange={formik.handleChange}
-                    value={formik.values.imgUrl}
-                    name="imgUrl"
-                    placeholder="Image Url"
-                    />
-                   <Button variant="primary">Add Heroes</Button>
-                </Card.Body>
-                </Card>
-            </div>
-            </Form>
-    );          
-};
+                imgURL:''
+            }}
+            onSubmit={this.handleSubmit}
+            render={formProps => {
 
-export default inputForm;
+                return(
+                    <div className="isi">
+                    <Form>
+                        <div className="container">
+                                <div className="col-sm-6">
+                                    <div className="card" style={{width: '22rem'}}>
+                                        <img src={cardImage} className="card-img-top" />
+                                        <div className="card-body">
+                                            <div className="form-group">
+                                                <Field
+                                                    type="text"
+                                                    className="form-control"
+                                                    name="name"
+                                                    placeholder="Name of the heroes"/>
+                                            </div>
+                                            <div className="form-group">
+                                                <Field
+                                                    type="text"
+                                                    className="form-control"
+                                                    name="born"
+                                                    placeholder="Year where the heroes born"/>
+                                            </div>
+                                            <div className="form-group">
+                                                <Field
+                                                    type="text"
+                                                    className="form-control"
+                                                    name="died"
+                                                    placeholder="Year where the heroes died"/>
+                                            </div>
+                                            <div className="form-group">
+                                                <Field
+                                                    type="text"
+                                                    className="form-control"
+                                                    name="description"
+                                                    placeholder="Description of the heroes"/>
+                                            </div>
+                                            <div className="form-group">
+                                                <Field
+                                                    type="text"
+                                                    className="form-control"
+                                                    name="establishment"
+                                                    placeholder="Year of the heroes get establish"/>                                                    
+                                            </div>
+                                            <div className="form-group">
+                                                <Field
+                                                    type="text"
+                                                    className="form-control"
+                                                    name="imgUrl"
+                                                    placeholder="Link of the heroes picture"/>                                                    
+                                            </div>
+                                            <button
+                                            className="btn btn-info"
+                                            type="submit"
+                                            disabled={formProps.isSubmitting}>
+                                            Submit
+                                            </button>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </Form>
+                        </div>
+                )
+            }}
+            />
+            
+        )
+    }
+}
+
+export default Input
