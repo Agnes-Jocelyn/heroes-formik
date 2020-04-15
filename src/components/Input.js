@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import {Formik, Form, Field} from 'formik'
-import {Card, Button} from 'react-bootstrap'
+import React from 'react';
+import {useFormik, Form, Field} from 'formik';
+import {Card, Button} from 'react-bootstrap';
 
-    const inputForm = () => {
-        const formik = useformik({
-            initialValues ={
+const inputForm = () => {
+    const formik = useFormik({
+            initialValues:{
                 name: '',
                 born: '',
                 died: '',
@@ -26,7 +26,7 @@ import {Card, Button} from 'react-bootstrap'
                  <Field
                     type="text"
                     onChange={formik.handleChange}
-                    value={formik.value.name}
+                    value={formik.values.name}
                     name="name"
                     placeholder="Name"
                     />
@@ -34,7 +34,7 @@ import {Card, Button} from 'react-bootstrap'
                 <Field
                     type="number"
                     onChange={formik.handleChange}
-                    value={formik.value.born}
+                    value={formik.values.born}
                     name="born"
                     placeholder="Born"
                     />
@@ -42,7 +42,7 @@ import {Card, Button} from 'react-bootstrap'
                 <Field
                     type="number"
                     onChange={formik.handleChange}
-                    value={formik.value.died}
+                    value={formik.values.died}
                     name="died"
                     placeholder="Died"
                     />
@@ -50,7 +50,7 @@ import {Card, Button} from 'react-bootstrap'
                 <Field
                     type="text"
                     onChange={formik.handleChange}
-                    value={formik.value.description}
+                    value={formik.values.description}
                     name="description"
                     placeholder="Description"
                     />
@@ -58,15 +58,15 @@ import {Card, Button} from 'react-bootstrap'
                 <Field
                     type="number"
                     onChange={formik.handleChange}
-                    value={formik.value.establishment}
+                    value={formik.values.establishment}
                     name="establisment"
                     placeholder="Establishment"
                     />
                     <br/>
                 <Field
-                    type="number"
+                    type="text"
                     onChange={formik.handleChange}
-                    value={formik.value.imgUrl}
+                    value={formik.values.imgUrl}
                     name="imgUrl"
                     placeholder="Image Url"
                     />
@@ -76,6 +76,6 @@ import {Card, Button} from 'react-bootstrap'
             </div>
             </Form>
     );          
-    };
+};
 
-export default Input;
+export default inputForm;
